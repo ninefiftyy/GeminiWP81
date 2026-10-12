@@ -1,0 +1,68 @@
+﻿<phone:PhoneApplicationPage
+
+
+    
+
+    x:Class="GeminiWP81.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!-- Layout principal -->
+    <!-- https://www.pedrolamas.com/windows-phone/windows-phone-8-application-bar-icons/ -->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Encabezado de la aplicación -->
+        <StackPanel Grid.Row="0" Margin="12,17,0,18">
+            <Image Width="48" Height="48" HorizontalAlignment="Left" Source="/Assets/ApplicationIcon.png" Stretch="Uniform" Visibility="{StaticResource PhoneDarkThemeVisibility}"/>
+            <Image Width="48" Height="48" HorizontalAlignment="Left" Source="/Assets/ApplicationIconLight.png" Stretch="Uniform" Visibility="{StaticResource PhoneLightThemeVisibility}"/>
+        </StackPanel>
+
+        
+        <!-- Área del historial de mensajes -->
+        <ScrollViewer x:Name="ChatScrollViewer" Grid.Row="1" Margin="12,0,12,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" SizeChanged="ChatScrollViewer_SizeChanged">
+            <!-- Cambiamos a Top para que los mensajes fluyan de arriba hacia abajo -->
+            <StackPanel x:Name="ChatPanel" VerticalAlignment="Top" Margin="0,10,0,20"/>
+        </ScrollViewer>
+
+        <!-- Área de entrada de texto y botón de envío -->
+        <Grid Grid.Row="2" Margin="12,10,12,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="InputText" Grid.Column="0" InputScope="Chat" AcceptsReturn="False"/>
+            <Button x:Name="SendButton" Grid.Column="1" Click="SendButton_Click" Width="120"/>
+        </Grid>
+
+    </Grid>
+
+    <!-- Barra de herramientas inferior (ApplicationBar) -->
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton 
+                IconUri="/Assets/AppBar/history.png" 
+                Text="chats" 
+                Click="history_button_click" />
+            <shell:ApplicationBarIconButton 
+                IconUri="/Assets/AppBar/settings-balanced.png" 
+                Text="settings" 
+                Click="settingsbutton_click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+</phone:PhoneApplicationPage>
+    
+    

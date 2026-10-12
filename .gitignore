@@ -1,0 +1,17 @@
+# Visual Studio state
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build output
+**/bin/
+**/obj/
+*.pdb
+*.xap
+
+# Test and temporary output
+TestResults/
+*.cache
+*.tmp

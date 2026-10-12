@@ -1,0 +1,52 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="GeminiWP81.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    SupportedOrientations="Portrait" Orientation="Portrait">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Encabezado -->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="PageTitle" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!-- Formulario de Configuración -->
+        <ScrollViewer Grid.Row="1" Margin="12,0,12,0" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel>
+                <!-- Sección API Key -->
+                <TextBlock x:Name="ApiKeyLabel" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="0,0,0,5"/>
+                <TextBox x:Name="ApiKeyInput" Margin="0,0,0,15"/>
+
+                <!-- Sección Selección de Modelo -->
+                <TextBlock x:Name="ModelLabel" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="0,10,0,5"/>
+                <ListBox x:Name="ModelListBox" Margin="10,0,10,20" SelectionChanged="ModelListBox_SelectionChanged">
+                    <ListBoxItem Content="gemini-2.5-flash" FontSize="22" Margin="0,5"/>
+                    <ListBoxItem Content="gemini-2.5-pro" FontSize="22" Margin="0,5"/>
+                    <ListBoxItem Content="gemini-2.5-flash-lite" FontSize="22" Margin="0,5"/>
+                    <ListBoxItem Content="gemini-3.1-flash-lite" FontSize="22" Margin="0,5"/>
+                    <ListBoxItem Content="gemini-3.5-flash" FontSize="22" Margin="0,5"/>
+                    <ListBoxItem Content="gemini-3.5-pro" FontSize="22" Margin="0,5"/>
+                    <ListBoxItem Content="gemini-3.8-flash" FontSize="22" Margin="0,5"/>
+                    <ListBoxItem Content="gemini-3.8-pro" FontSize="22" Margin="0,5"/>
+                </ListBox>
+
+                <TextBlock x:Name="LanguageLabel" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="0,10,0,5"/>
+                <RadioButton x:Name="EnglishLanguageOption" Content="English" GroupName="AppLanguage" Checked="LanguageOption_Checked"/>
+                <RadioButton x:Name="SpanishLanguageOption" Content="Español" GroupName="AppLanguage" Checked="LanguageOption_Checked"/>
+
+                <TextBlock x:Name="AboutLabel" Style="{StaticResource PhoneTextGroupHeaderStyle}" Margin="0,18,0,5"/>
+                <StackPanel Margin="10,0,10,20" HorizontalAlignment="Stretch">
+                    <TextBlock Text="Made with love by yuki/ninefiftyy from Costa Rica" FontSize="18" TextWrapping="Wrap" Margin="0,5,0,10"/>
+                    <TextBlock Text="Version 1.0.0" FontSize="18" TextWrapping="Wrap" Margin="0,5,0,10"/>
+                    <TextBlock Text="All Gemini logos and trademarks are the property of Google Inc. This is not an official Google product." FontSize="18" TextWrapping="Wrap" Margin="0,5,0,10"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</phone:PhoneApplicationPage>
